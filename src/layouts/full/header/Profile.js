@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Avatar,
   Box,
-  Menu,
   Button,
   IconButton,
-  MenuItem,
   ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
 } from '@mui/material';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { IconListCheck, IconMail, IconUser } from '@tabler/icons';
+import { IconUser } from '@tabler/icons';
 
 import ProfileImg from 'src/assets/images/profile/user-1.jpg';
 

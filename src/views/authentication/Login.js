@@ -1,13 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Box, Card, Stack, Typography } from '@mui/material';
+import { Box, Card, Grid } from '@mui/material';
 
 // components
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import AuthLogin from './auth/AuthLogin';
 
-const Login2 = () => {
+const Login = () => {
   return (
     <PageContainer title="Login" description="this is Login page">
       <Box
@@ -49,4 +47,4 @@ const Login2 = () => {
   );
 };
 
-export default Login2;
+export default Login;

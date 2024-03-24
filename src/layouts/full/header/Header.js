@@ -1,20 +1,9 @@
-import React from 'react';
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  styled,
-  Stack,
-  IconButton,
-  Badge,
-  Button,
-  Typography,
-} from '@mui/material';
+import { AppBar, Badge, Box, IconButton, Stack, Toolbar, Typography, styled } from '@mui/material';
 import PropTypes from 'prop-types';
 
 // components
-import Profile from './Profile';
 import { IconBellRinging, IconMenu } from '@tabler/icons';
+import Profile from './Profile';
 
 const Header = (props) => {
   // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
