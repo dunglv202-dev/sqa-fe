@@ -1,68 +1,55 @@
-import {
-  IconAperture, IconCopy, IconLayoutDashboard, IconLogin, IconMoodHappy, IconTypography, IconUserPlus
-} from '@tabler/icons';
+import { IconCash, IconLogout, IconPigMoney, IconReportMoney } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
 
 const Menuitems = [
   {
     navlabel: true,
-    subheader: 'Home',
+    subheader: 'Quản lý',
   },
-
   {
     id: uniqueId(),
-    title: 'Dashboard',
-    icon: IconLayoutDashboard,
+    title: 'Vay lãi',
+    icon: IconCash,
     href: '/dashboard',
   },
   {
-    navlabel: true,
-    subheader: 'Utilities',
-  },
-  {
     id: uniqueId(),
-    title: 'Typography',
-    icon: IconTypography,
-    href: '/ui/typography',
-  },
-  {
-    id: uniqueId(),
-    title: 'Shadow',
-    icon: IconCopy,
-    href: '/ui/shadow',
+    title: 'Gửi tiết kiệm',
+    icon: IconPigMoney,
+    href: '/manage/savings',
   },
   {
     navlabel: true,
-    subheader: 'Auth',
+    subheader: 'Báo báo',
   },
   {
     id: uniqueId(),
-    title: 'Login',
-    icon: IconLogin,
-    href: '/auth/login',
+    title: 'Tổng quan',
+    icon: IconReportMoney,
+    href: '/reports/general',
   },
   {
     id: uniqueId(),
-    title: 'Register',
-    icon: IconUserPlus,
-    href: '/auth/register',
+    title: 'Cho vay',
+    icon: IconCash,
+    href: '/reports/loans',
+  },
+  {
+    id: uniqueId(),
+    title: 'Gửi tiết kiệm',
+    icon: IconPigMoney,
+    href: '/report/savings',
   },
   {
     navlabel: true,
-    subheader: 'Extra',
+    subheader: 'Xác thực',
   },
   {
     id: uniqueId(),
-    title: 'Icons',
-    icon: IconMoodHappy,
-    href: '/icons',
-  },
-  {
-    id: uniqueId(),
-    title: 'Sample Page',
-    icon: IconAperture,
-    href: '/sample-page',
+    title: 'Đăng xuất',
+    icon: IconLogout,
+    href: '/auth/logout',
   },
 ];
 
