@@ -1,5 +1,15 @@
 import React from 'react';
-import { Box, AppBar, Toolbar, styled, Stack, IconButton, Badge, Button } from '@mui/material';
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  styled,
+  Stack,
+  IconButton,
+  Badge,
+  Button,
+  Typography,
+} from '@mui/material';
 import PropTypes from 'prop-types';
 
 // components
@@ -59,6 +69,7 @@ const Header = (props) => {
         </IconButton>
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
+          <Typography>Xin chào, ...</Typography>
           <Profile />
         </Stack>
       </ToolbarStyled>

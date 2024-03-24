@@ -11,7 +11,7 @@ const Menuitems = [
     id: uniqueId(),
     title: 'Vay lãi',
     icon: IconCash,
-    href: '/dashboard',
+    href: '/manage/loans',
   },
   {
     id: uniqueId(),
@@ -39,7 +39,7 @@ const Menuitems = [
     id: uniqueId(),
     title: 'Gửi tiết kiệm',
     icon: IconPigMoney,
-    href: '/report/savings',
+    href: '/reports/savings',
   },
   {
     navlabel: true,
