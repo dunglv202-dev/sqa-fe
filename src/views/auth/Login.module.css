@@ -1,0 +1,8 @@
+.login-form {
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 500px;
+  margin: 100px auto 0 auto;
+}
