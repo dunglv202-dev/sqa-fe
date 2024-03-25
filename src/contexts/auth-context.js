@@ -15,10 +15,8 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (!user) return;
-
-    if (user.authorities.includes('ROLE_MANAGER')) {
-      navigate('/manage/loans');
+    if (user) {
+      navigate('/');
     }
   }, [user]);
 

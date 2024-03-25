@@ -17,7 +17,7 @@ const Router = [
     path: '/',
     element: <FullLayout />,
     children: [
-      { path: '/', element: <Navigate to="/manage/loans" /> },
+      { path: '/', element: <Dashboard /> },
       {
         path: '/manage',
         children: [
@@ -32,6 +32,10 @@ const Router = [
           { path: 'loans', exact: true, element: <Dashboard /> },
           { path: 'savings', exact: true, element: <Dashboard /> },
         ],
+      },
+      {
+        path: '/config',
+        children: [],
       },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],

@@ -9,37 +9,21 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'Vay lãi',
+    title: 'Cấu hình',
+    icon: IconCash,
+    href: '/config',
+  },
+  {
+    id: uniqueId(),
+    title: 'Theo dõi danh sách',
     icon: IconCash,
     href: '/manage/loans',
   },
   {
     id: uniqueId(),
-    title: 'Gửi tiết kiệm',
-    icon: IconPigMoney,
-    href: '/manage/savings',
-  },
-  {
-    navlabel: true,
-    subheader: 'Báo báo',
-  },
-  {
-    id: uniqueId(),
-    title: 'Tổng quan',
-    icon: IconReportMoney,
-    href: '/reports/general',
-  },
-  {
-    id: uniqueId(),
-    title: 'Cho vay',
+    title: 'Báo cáo',
     icon: IconCash,
-    href: '/reports/loans',
-  },
-  {
-    id: uniqueId(),
-    title: 'Gửi tiết kiệm',
-    icon: IconPigMoney,
-    href: '/reports/savings',
+    href: '/reports',
   },
   {
     navlabel: true,
