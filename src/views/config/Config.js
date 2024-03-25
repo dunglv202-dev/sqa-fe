@@ -7,7 +7,7 @@ const Config = () => {
   return (
     <PageContainer title="Cấu hình">
       <Box>
-        <Grid container justifyContent="center" spacing={3}>
+        <Grid container justifyContent="center" paddingTop={15} spacing={3}>
           <Grid item xs={6} lg={4}>
             <Option
               icon={IconCreditCard}

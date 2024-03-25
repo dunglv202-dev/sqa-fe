@@ -7,7 +7,7 @@ const Manage = () => {
   return (
     <PageContainer title="Theo dõi danh sách">
       <Box>
-        <Grid container justifyContent="center" spacing={3}>
+        <Grid container justifyContent="center" paddingTop={15} spacing={3}>
           <Grid item xs={6} lg={4}>
             <Option icon={IconPigMoney} title="Tài khoản tiết kiệm" path="/lists/savings" />
           </Grid>

@@ -7,7 +7,7 @@ const Report = () => {
   return (
     <PageContainer title="Báo cáo">
       <Box>
-        <Grid container justifyContent="center" spacing={3}>
+        <Grid container justifyContent="center" paddingTop={15} spacing={3}>
           <Grid item xs={6} lg={4}>
             <Option icon={IconReport} title="Báo cáo tổng quan" path="/reports/general" />
           </Grid>
