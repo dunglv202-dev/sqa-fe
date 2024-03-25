@@ -41,4 +41,26 @@ const fetchSavingConfigs = async () => {
   });
 };
 
-export { configSaving, fetchSavingConfigs };
+const configLoan = async ({ type, startDate, configs }) => {
+  await fetchApi({
+    endpoint: '/api/v1/configs/loan',
+    method: 'POST',
+    payload: {
+      type,
+      startDate,
+      configs,
+    },
+  });
+};
+
+const fetchLoanConfigs = async (type) => {
+  return await fetchApi({
+    endpoint: '/api/v1/configs/loan',
+    method: 'GET',
+    params: {
+      type,
+    },
+  });
+};
+
+export { configSaving, fetchSavingConfigs, fetchLoanConfigs, configLoan };

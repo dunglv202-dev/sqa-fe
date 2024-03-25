@@ -1,4 +1,4 @@
-const fetchApi = async ({ endpoint = '/', method = 'GET', payload }) => {
+const fetchApi = async ({ endpoint = '/', method = 'GET', params, payload }) => {
   const accessToken = localStorage.getItem('accessToken');
 
   const config = {
@@ -11,6 +11,10 @@ const fetchApi = async ({ endpoint = '/', method = 'GET', payload }) => {
 
   if (payload) {
     config.body = JSON.stringify(payload);
+  }
+
+  if (params) {
+    endpoint = endpoint + '?' + new URLSearchParams(params);
   }
 
   const resp = await fetch(`http://localhost:8080${endpoint}`, config);
