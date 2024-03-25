@@ -1,7 +1,6 @@
-import { styled } from '@mui/material/styles';
-import { TextField } from '@mui/material';
+import { Select, styled } from '@mui/material';
 
-const CustomTextField = styled(TextField)(({ theme }) => ({
+const CustomSelect = styled(Select)(({ theme }) => ({
   '& .MuiOutlinedInput-input::-webkit-input-placeholder': {
     color: theme.palette.text.secondary,
     opacity: '0.8',
@@ -15,4 +14,4 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
-export default CustomTextField;
+export default CustomSelect;
