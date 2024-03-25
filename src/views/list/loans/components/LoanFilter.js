@@ -3,7 +3,7 @@ import { useState } from 'react';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
 
 const LoanFilter = ({ onFilter }) => {
-  const [idCardNo, setIdCardNo] = useState('');
+  const [idCardNo, setIdCardNo] = useState();
   const [secured, setSecured] = useState(true);
   const [unsecured, setUnsecured] = useState(true);
 

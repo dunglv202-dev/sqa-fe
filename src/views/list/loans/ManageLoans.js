@@ -15,10 +15,16 @@ const ManageLoans = () => {
     };
 
     fetchLoans();
-  });
+  }, []);
 
-  const doFilter = ({ idCardNo, types }) => {
-    console.log(idCardNo, types);
+  const doFilter = async ({ idCardNo, types }) => {
+    const filterParams = { types };
+
+    if (idCardNo) {
+      filterParams.idCardNo = idCardNo;
+    }
+
+    setLoans((await fetchAllLoans(filterParams)).items);
   };
 
   return (
