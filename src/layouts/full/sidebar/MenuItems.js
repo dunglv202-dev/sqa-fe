@@ -1,4 +1,12 @@
-import { IconCash, IconLogout, IconPigMoney, IconReportMoney } from '@tabler/icons';
+import {
+  IconAdjustments,
+  IconCash,
+  IconList,
+  IconLogout,
+  IconPigMoney,
+  IconReport,
+  IconReportMoney,
+} from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
 
@@ -10,19 +18,19 @@ const Menuitems = [
   {
     id: uniqueId(),
     title: 'Cấu hình',
-    icon: IconCash,
-    href: '/config',
+    icon: IconAdjustments,
+    href: '/configs',
   },
   {
     id: uniqueId(),
     title: 'Theo dõi danh sách',
-    icon: IconCash,
-    href: '/manage/loans',
+    icon: IconList,
+    href: '/lists',
   },
   {
     id: uniqueId(),
     title: 'Báo cáo',
-    icon: IconCash,
+    icon: IconReport,
     href: '/reports',
   },
   {
