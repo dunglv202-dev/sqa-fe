@@ -1,9 +1,26 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!user) return;
+
+    if (user.authorities.includes('ROLE_MANAGER')) {
+      navigate('/manage/loans');
+    }
+  }, [user]);
 
   const login = async (username, password) => {
     console.log(username, password);
@@ -29,14 +46,14 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem('accessToken', respData.accessToken);
     localStorage.setItem('user', JSON.stringify(user));
     setUser(user);
-
-    console.log(user.authorities);
-    if (user.authorities.includes('ROLE_MANAGER')) {
-      window.location.href = '/manage/loans';
-    }
   };
 
-  const logout = async () => {};
+  const logout = async () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('accessToken');
+
+    navigate('/auth/login');
+  };
 
   return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>;
 };

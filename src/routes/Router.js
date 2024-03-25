@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
+import Logout from 'src/views/authentication/Logout';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -41,6 +42,7 @@ const Router = [
     children: [
       { path: '404', element: <Error /> },
       { path: '/auth/login', element: <Login /> },
+      { path: '/auth/logout', element: <Logout /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },

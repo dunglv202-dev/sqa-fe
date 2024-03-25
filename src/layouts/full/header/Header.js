@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 // components
 import { IconBellRinging, IconMenu } from '@tabler/icons';
 import Profile from './Profile';
+import { useContext } from 'react';
+import { AuthContext } from 'src/contexts/auth-context';
 
 const Header = (props) => {
   // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   // const lgDown = useMediaQuery((theme) => theme.breakpoints.down('lg'));
+  const authContext = useContext(AuthContext);
 
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
     boxShadow: 'none',
@@ -58,7 +61,7 @@ const Header = (props) => {
         </IconButton>
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
-          <Typography>Xin chào, ...</Typography>
+          <Typography>Xin chào, {authContext.user.name}</Typography>
           <Profile />
         </Stack>
       </ToolbarStyled>
