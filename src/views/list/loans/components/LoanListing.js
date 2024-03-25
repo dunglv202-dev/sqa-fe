@@ -69,8 +69,8 @@ const LoanListing = ({ loans }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {loans.map((product) => (
-            <TableRow key={product.name}>
+          {loans.map((loan) => (
+            <TableRow key={loan.id}>
               <TableCell>
                 <Typography
                   sx={{
@@ -78,7 +78,7 @@ const LoanListing = ({ loans }) => {
                     fontWeight: '500',
                   }}
                 >
-                  {product.id}
+                  {loan.id}
                 </Typography>
               </TableCell>
               <TableCell>
@@ -89,43 +89,35 @@ const LoanListing = ({ loans }) => {
                   }}
                 >
                   <Box>
-                    <Typography variant="subtitle2" fontWeight={600}>
-                      {product.name}
-                    </Typography>
-                    <Typography
-                      color="textSecondary"
-                      sx={{
-                        fontSize: '13px',
-                      }}
-                    >
-                      {product.post}
+                    <Typography variant="subtitle2" color="textSecondary" fontWeight={400}>
+                      {loan.customer}
                     </Typography>
                   </Box>
                 </Box>
               </TableCell>
               <TableCell>
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                  {product.pname}
+                  {loan.idCardNo}
                 </Typography>
               </TableCell>
               <TableCell>
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                  {product.pname}
+                  {loan.lendingDate}
                 </Typography>
               </TableCell>
               <TableCell>
                 <Chip
                   sx={{
                     px: '4px',
-                    backgroundColor: product.pbg,
+                    backgroundColor: loan.type === 'SECURED' ? 'primary.main' : 'error.main',
                     color: '#fff',
                   }}
                   size="small"
-                  label={product.priority}
+                  label={loan.type === 'SECURED' ? 'Thế chấp' : 'Tín chấp'}
                 ></Chip>
               </TableCell>
               <TableCell align="right">
-                <Typography variant="h6">${product.budget}k</Typography>
+                <Typography variant="h6">{loan.amount}</Typography>
               </TableCell>
               <TableCell align="center">
                 <ExternalLink href="./helloWorld" target="_blank">
