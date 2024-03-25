@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Box,
   Typography,
@@ -11,8 +11,22 @@ import {
 import { Link } from 'react-router-dom';
 
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
+import { AuthContext } from 'src/contexts/auth-context';
 
 const AuthLogin = () => {
+  const authContext = useContext(AuthContext);
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+
+  const handleLogin = async (e) => {
+    try {
+      e.preventDefault();
+      await authContext.login(username, password);
+    } catch (e) {
+      alert(e);
+    }
+  };
+
   return (
     <>
       <Stack>
@@ -26,7 +40,12 @@ const AuthLogin = () => {
           >
             Tên đăng nhập
           </Typography>
-          <CustomTextField id="username" variant="outlined" fullWidth />
+          <CustomTextField
+            id="username"
+            variant="outlined"
+            fullWidth
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </Box>
         <Box mt="25px">
           <Typography
@@ -38,7 +57,13 @@ const AuthLogin = () => {
           >
             Mật khẩu
           </Typography>
-          <CustomTextField id="password" type="password" variant="outlined" fullWidth />
+          <CustomTextField
+            id="password"
+            type="password"
+            variant="outlined"
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+          />
         </Box>
         <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
           <FormGroup>
@@ -66,6 +91,7 @@ const AuthLogin = () => {
           component={Link}
           to="/"
           type="submit"
+          onClick={handleLogin}
         >
           Đăng nhập
         </Button>
