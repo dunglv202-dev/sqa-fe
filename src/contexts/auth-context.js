@@ -14,12 +14,6 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (user) {
-      navigate('/');
-    }
-  }, [user]);
-
   const login = async (username, password) => {
     console.log(username, password);
 
@@ -44,6 +38,7 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem('accessToken', respData.accessToken);
     localStorage.setItem('user', JSON.stringify(user));
     setUser(user);
+    navigate('/');
   };
 
   const logout = async () => {

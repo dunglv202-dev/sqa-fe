@@ -74,8 +74,8 @@ const SavingListing = ({ savings }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {savings.map((product) => (
-            <TableRow key={product.name}>
+          {savings.map((saving) => (
+            <TableRow key={saving.id}>
               <TableCell>
                 <Typography
                   sx={{
@@ -83,59 +83,38 @@ const SavingListing = ({ savings }) => {
                     fontWeight: '500',
                   }}
                 >
-                  {product.id}
+                  {saving.id}
                 </Typography>
               </TableCell>
               <TableCell>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Box>
-                    <Typography variant="subtitle2" fontWeight={600}>
-                      {product.name}
-                    </Typography>
-                    <Typography
-                      color="textSecondary"
-                      sx={{
-                        fontSize: '13px',
-                      }}
-                    >
-                      {product.post}
-                    </Typography>
-                  </Box>
-                </Box>
-              </TableCell>
-              <TableCell>
-                <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                  {product.pname}
+                <Typography color="textSecondary" variant="subtitle2" fontWeight={600}>
+                  {saving.customer}
                 </Typography>
               </TableCell>
               <TableCell>
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                  {product.pname}
+                  {saving.idCardNo}
                 </Typography>
               </TableCell>
               <TableCell>
-                <Chip
-                  sx={{
-                    px: '4px',
-                    backgroundColor: product.pbg,
-                    color: '#fff',
-                  }}
-                  size="small"
-                  label={product.priority}
-                ></Chip>
-              </TableCell>
-              <TableCell align="right">
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                  {product.pname}
+                  {saving.depositDate}
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
+                  {saving.termInMonth} tháng
                 </Typography>
               </TableCell>
               <TableCell align="right">
-                <Typography variant="h6">${product.budget}k</Typography>
+                <Typography color="textSecondary" variant="subtitle2" fontWeight={600}>
+                  {saving.amount}
+                </Typography>
+              </TableCell>
+              <TableCell align="right">
+                <Typography color="textSecondary" variant="subtitle2" fontWeight={600}>
+                  {saving.yearlyInterestRate * 100}%
+                </Typography>
               </TableCell>
               <TableCell align="center">
                 <ExternalLink href="./helloWorld" target="_blank">

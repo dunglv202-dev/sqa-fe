@@ -32,7 +32,7 @@ const LoanListing = ({ loans }) => {
         <TableHead>
           <TableRow>
             <TableCell>
-              <Typography variant="subtitle2" fontWeight={600}>
+              <Typography variant="subtitle2" fontWeight={500}>
                 Mã
               </Typography>
             </TableCell>
@@ -88,11 +88,9 @@ const LoanListing = ({ loans }) => {
                     alignItems: 'center',
                   }}
                 >
-                  <Box>
-                    <Typography variant="subtitle2" color="textSecondary" fontWeight={400}>
-                      {loan.customer}
-                    </Typography>
-                  </Box>
+                  <Typography variant="subtitle2" color="textSecondary" fontWeight={600}>
+                    {loan.customer}
+                  </Typography>
                 </Box>
               </TableCell>
               <TableCell>
@@ -117,7 +115,9 @@ const LoanListing = ({ loans }) => {
                 ></Chip>
               </TableCell>
               <TableCell align="right">
-                <Typography variant="h6">{loan.amount}</Typography>
+                <Typography color="textSecondary" variant="subtitle2" fontWeight={600}>
+                  {loan.amount}
+                </Typography>
               </TableCell>
               <TableCell align="center">
                 <ExternalLink href="./helloWorld" target="_blank">
