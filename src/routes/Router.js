@@ -1,10 +1,12 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-import Loadable from '../layouts/full/shared/loadable/Loadable';
 import Logout from 'src/views/authentication/Logout';
-import Manage from 'src/views/list/Manage';
 import Config from 'src/views/config/Config';
+import Manage from 'src/views/list/Manage';
+import ManageLoans from 'src/views/list/loans/ManageLoans';
+import ManageSavings from 'src/views/list/savings/ManageSavings';
 import Report from 'src/views/report/Report';
+import Loadable from '../layouts/full/shared/loadable/Loadable';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -25,8 +27,8 @@ const Router = [
         path: '/lists',
         children: [
           { path: '', exact: true, element: <Manage /> },
-          { path: 'loans', exact: true, element: <Dashboard /> },
-          { path: 'savings', exact: true, element: <Dashboard /> },
+          { path: 'loans', exact: true, element: <ManageLoans /> },
+          { path: 'savings', exact: true, element: <ManageSavings /> },
         ],
       },
       {
