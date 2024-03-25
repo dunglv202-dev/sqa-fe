@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchApi } from 'src/services/general';
 
 export const AuthContext = createContext();
 
@@ -17,18 +18,11 @@ export const AuthContextProvider = ({ children }) => {
   const login = async (username, password) => {
     console.log(username, password);
 
-    const resp = await fetch('http://localhost:8080/api/v1/auth/login', {
+    const respData = await fetchApi({
+      endpoint: '/api/v1/auth/login',
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
+      payload: { username, password },
     });
-    const respData = await resp.json();
-
-    if (!resp.ok) {
-      throw new Error(respData.error);
-    }
 
     const user = {
       name: respData.displayName,
