@@ -1,3 +1,8 @@
+const trimParams = (params) => {
+  Object.keys(params).forEach((k) => params[k] == null && delete params[k]);
+  return Object.keys(params).length > 0;
+};
+
 const fetchApi = async ({ endpoint = '/', method = 'GET', params, payload }) => {
   const accessToken = localStorage.getItem('accessToken');
 
@@ -13,7 +18,7 @@ const fetchApi = async ({ endpoint = '/', method = 'GET', params, payload }) => 
     config.body = JSON.stringify(payload);
   }
 
-  if (params) {
+  if (params && trimParams(params)) {
     endpoint = endpoint + '?' + new URLSearchParams(params);
   }
 

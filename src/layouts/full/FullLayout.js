@@ -29,6 +29,7 @@ const FullLayout = () => {
   // const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
 
   useEffect(() => {
+    console.log(authContext.user);
     if (!authContext.user) {
       navigate('/auth/login');
     }

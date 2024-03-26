@@ -4,8 +4,20 @@ import { Box, Card, Grid } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import AuthLogin from './auth/AuthLogin';
+import { useContext, useEffect } from 'react';
+import { AuthContext } from 'src/contexts/auth-context';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authContext.user) {
+      navigate('/');
+    }
+  }, []);
+
   return (
     <PageContainer title="Login" description="this is Login page">
       <Box
