@@ -1,5 +1,5 @@
 import { Box, Grid } from '@mui/material';
-import { IconBuildingWarehouse, IconCash, IconCreditCard, IconPigMoney } from '@tabler/icons';
+import { IconBuildingWarehouse, IconCreditCard, IconPigMoney } from '@tabler/icons';
 import PageContainer from 'src/components/container/PageContainer';
 import Option from 'src/components/shared/Option';
 

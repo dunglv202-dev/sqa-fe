@@ -1,9 +1,11 @@
-import { Grid, Typography, styled, useTheme } from '@mui/material';
+import { Box, Grid, Typography, styled, useTheme } from '@mui/material';
 import { IconCash, IconCreditCard, IconCurrencyDollar, IconPigMoney } from '@tabler/icons';
 import { useEffect, useState } from 'react';
 import PageContainer from 'src/components/container/PageContainer';
 import { fetchGeneralReport } from 'src/services/report';
 import ReportCard from './components/ReportCard';
+import PeriodSelect from '../components/PeriodSelect';
+import PeriodTypeSelect from '../components/PeriodTypeSelect';
 
 const Figure = styled(Typography)(({ theme }) => ({
   display: 'inline',
@@ -18,6 +20,8 @@ const Figure = styled(Typography)(({ theme }) => ({
 const GeneralReport = () => {
   const theme = useTheme();
   const [reportData, setReportData] = useState({});
+  const [periodType, setPeriodType] = useState();
+  const [period, setPeriod] = useState();
 
   const IconCredit = () => <IconCreditCard size={50} color={theme.palette.primary.main} />;
   const IconMoney = () => <IconCash size={50} color={theme.palette.primary.main} />;
@@ -25,37 +29,50 @@ const GeneralReport = () => {
   const IconDollar = () => <IconCurrencyDollar size={50} color={theme.palette.primary.main} />;
 
   useEffect(() => {
+    if (!period) return;
+
     const fetchReport = async () => {
-      setReportData(await fetchGeneralReport({ year: 2024 }));
+      setReportData(await fetchGeneralReport(period));
     };
 
     fetchReport();
-  }, []);
+  }, [period]);
 
   return (
     <PageContainer title="Báo cáo tổng quan">
-      <Grid container spacing={10}>
-        <Grid item xs={12} sm={6}>
-          <ReportCard icon={IconCredit}>
-            <Figure>{reportData.numberOfLoan}</Figure> khoản vay
-          </ReportCard>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <ReportCard icon={IconMoney}>
-            <Figure>{reportData.lendingAmount}</Figure> cho vay
-          </ReportCard>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <ReportCard icon={IconPig}>
-            <Figure>{reportData.numberOfSaving}</Figure> sổ tiết kiệm được mở
-          </ReportCard>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <ReportCard icon={IconDollar}>
-            <Figure>{reportData.savingDepositAmount}</Figure> tiền gửi tiết kiệm
-          </ReportCard>
-        </Grid>
-      </Grid>
+      {!periodType && <PeriodTypeSelect onSelect={(type) => setPeriodType(type)} />}
+      {periodType && (
+        <Box>
+          <Box marginBottom={5}>
+            <PeriodSelect
+              periodType={periodType}
+              onChange={(periodData) => setPeriod(periodData)}
+            />
+          </Box>
+          <Grid container spacing={10}>
+            <Grid item xs={12} sm={6}>
+              <ReportCard icon={IconCredit}>
+                <Figure>{reportData.numberOfLoan}</Figure> khoản vay
+              </ReportCard>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <ReportCard icon={IconMoney}>
+                <Figure>{reportData.lendingAmount}</Figure> cho vay
+              </ReportCard>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <ReportCard icon={IconPig}>
+                <Figure>{reportData.numberOfSaving}</Figure> sổ tiết kiệm được mở
+              </ReportCard>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <ReportCard icon={IconDollar}>
+                <Figure>{reportData.savingDepositAmount}</Figure> tiền gửi tiết kiệm
+              </ReportCard>
+            </Grid>
+          </Grid>
+        </Box>
+      )}
     </PageContainer>
   );
 };
