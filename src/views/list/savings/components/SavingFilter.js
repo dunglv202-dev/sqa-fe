@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useState } from 'react';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
 

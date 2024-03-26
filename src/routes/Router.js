@@ -7,6 +7,7 @@ import ManageLoans from 'src/views/list/loans/ManageLoans';
 import ManageSavings from 'src/views/list/savings/ManageSavings';
 import Report from 'src/views/report/Report';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
+import ConfigSaving from 'src/views/config/saving/ConfigSaving';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -42,7 +43,10 @@ const Router = [
       },
       {
         path: '/configs',
-        children: [{ path: '', exact: true, element: <Config /> }],
+        children: [
+          { path: '', exact: true, element: <Config /> },
+          { path: 'savings', exact: true, element: <ConfigSaving /> },
+        ],
       },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
