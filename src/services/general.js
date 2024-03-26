@@ -10,6 +10,7 @@ const fetchApi = async ({ endpoint = '/', method = 'GET', params, payload }) => 
     method,
     headers: {
       'Content-Type': 'application/json',
+      'ngrok-skip-browser-warning': true,
       Authorization: `Bearer ${accessToken}`,
     },
   };
@@ -22,7 +23,7 @@ const fetchApi = async ({ endpoint = '/', method = 'GET', params, payload }) => 
     endpoint = endpoint + '?' + new URLSearchParams(params);
   }
 
-  const resp = await fetch(`http://localhost:8080${endpoint}`, config);
+  const resp = await fetch(`https://362f-58-187-75-23.ngrok-free.app${endpoint}`, config);
 
   if (!resp.ok) {
     const respPayload = await resp.json();

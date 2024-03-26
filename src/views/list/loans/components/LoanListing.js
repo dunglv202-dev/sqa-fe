@@ -120,7 +120,7 @@ const LoanListing = ({ loans }) => {
                 </Typography>
               </TableCell>
               <TableCell align="center">
-                <ExternalLink href="./helloWorld" target="_blank">
+                <ExternalLink href={`/lists/loans/${loan.id}`} target="_blank">
                   Xem
                 </ExternalLink>
               </TableCell>

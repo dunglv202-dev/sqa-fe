@@ -61,7 +61,12 @@ const Header = (props) => {
         </IconButton>
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
-          <Typography>Xin chào, {authContext.user?.name}</Typography>
+          <Box>
+            <Typography sx={{ display: 'inline' }}>Xin chào, </Typography>
+            <Typography sx={{ fontWeight: 600, display: 'inline' }}>
+              {authContext.user?.name}
+            </Typography>
+          </Box>
           <Profile />
         </Stack>
       </ToolbarStyled>

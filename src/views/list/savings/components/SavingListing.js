@@ -117,7 +117,7 @@ const SavingListing = ({ savings }) => {
                 </Typography>
               </TableCell>
               <TableCell align="center">
-                <ExternalLink href="./helloWorld" target="_blank">
+                <ExternalLink href={`/lists/savings/${saving.id}`} target="_blank">
                   Xem
                 </ExternalLink>
               </TableCell>
