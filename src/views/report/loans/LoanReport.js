@@ -4,35 +4,34 @@ import DistributionChart from './components/DistributionChart';
 import Figures from './components/Figures';
 import { fetchLoanReport } from 'src/services/report';
 import { useEffect, useState } from 'react';
+import ReportWrapper from '../components/ReportWrapper';
 
 const LoanReport = () => {
   const [reportData, setReportData] = useState({
     typeDistributions: [],
   });
 
-  useEffect(() => {
-    const fetchReport = async () => {
-      setReportData(await fetchLoanReport({ year: 2024 }));
-    };
-
-    fetchReport();
-  }, []);
+  const fetchReport = async (period) => {
+    setReportData(await fetchLoanReport(period));
+  };
 
   return (
     <PageContainer title="Báo cáo khoản vay">
-      <Grid container spacing={3}>
-        <Grid item lg={8}>
-          <Figures reportData={reportData} />
+      <ReportWrapper fetcher={fetchReport}>
+        <Grid container spacing={3}>
+          <Grid item lg={8}>
+            <Figures reportData={reportData} />
+          </Grid>
+          <Grid item lg={4}>
+            <DistributionChart
+              items={reportData.typeDistributions.map((entry) => ({
+                label: entry.type === 'SECURED' ? 'Vay thế chấp' : 'Vay tín chấp',
+                value: entry.totalAmount,
+              }))}
+            />
+          </Grid>
         </Grid>
-        <Grid item lg={4}>
-          <DistributionChart
-            items={reportData.typeDistributions.map((entry) => ({
-              label: entry.type === 'SECURED' ? 'Vay thế chấp' : 'Vay tín chấp',
-              value: entry.totalAmount,
-            }))}
-          />
-        </Grid>
-      </Grid>
+      </ReportWrapper>
     </PageContainer>
   );
 };
