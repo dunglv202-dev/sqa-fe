@@ -5,6 +5,16 @@ import PageContainer from 'src/components/container/PageContainer';
 import { fetchGeneralReport } from 'src/services/report';
 import ReportCard from './components/ReportCard';
 
+const Figure = styled(Typography)(({ theme }) => ({
+  display: 'inline',
+  color: theme.palette.text.secondary,
+  fontWeight: 600,
+  fontSize: '2rem',
+  position: 'relative',
+  top: '3px',
+  marginRight: '5px',
+}));
+
 const GeneralReport = () => {
   const theme = useTheme();
   const [reportData, setReportData] = useState({});
@@ -13,15 +23,6 @@ const GeneralReport = () => {
   const IconMoney = () => <IconCash size={50} color={theme.palette.primary.main} />;
   const IconPig = () => <IconPigMoney size={50} color={theme.palette.primary.main} />;
   const IconDollar = () => <IconCurrencyDollar size={50} color={theme.palette.primary.main} />;
-  const Figure = styled(Typography)(({ theme }) => ({
-    display: 'inline',
-    color: theme.palette.text.secondary,
-    fontWeight: 600,
-    fontSize: '2rem',
-    position: 'relative',
-    top: '3px',
-    marginRight: '5px',
-  }));
 
   useEffect(() => {
     const fetchReport = async () => {

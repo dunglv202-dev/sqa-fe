@@ -10,6 +10,7 @@ import ManageSavings from 'src/views/list/savings/ManageSavings';
 import Report from 'src/views/report/Report';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import GeneralReport from 'src/views/report/general/GeneralReport';
+import LoanReport from 'src/views/report/loans/LoanReport';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -39,7 +40,7 @@ const Router = [
         children: [
           { path: '', exact: true, element: <Report /> },
           { path: 'general', exact: true, element: <GeneralReport /> },
-          { path: 'loans', exact: true, element: <Dashboard /> },
+          { path: 'loans', exact: true, element: <LoanReport /> },
           { path: 'savings', exact: true, element: <Dashboard /> },
         ],
       },
