@@ -5,8 +5,11 @@ import PageContainer from 'src/components/container/PageContainer';
 import Option from 'src/components/shared/Option';
 import { AuthContext } from 'src/contexts/auth-context';
 import ReviewConfig from './ReviewConfig';
+import useAuthorization from 'src/hooks/useAuthorization';
 
 const Config = () => {
+  useAuthorization(['ROLE_MANAGER', 'ROLE_DIRECTOR']);
+
   const authContext = useContext(AuthContext);
   const authorities = authContext?.user?.authorities || [];
 

@@ -19,12 +19,8 @@ const AuthLogin = () => {
   const [password, setPassword] = useState();
 
   const handleLogin = async (e) => {
-    try {
-      e.preventDefault();
-      await authContext.login(username, password);
-    } catch (e) {
-      alert(e);
-    }
+    e.preventDefault();
+    await authContext.login(username, password);
   };
 
   return (

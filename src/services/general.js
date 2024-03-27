@@ -23,10 +23,11 @@ const fetchApi = async ({ endpoint = '/', method = 'GET', params, payload }) => 
     endpoint = endpoint + '?' + new URLSearchParams(params);
   }
 
-  const resp = await fetch(`http://localhost:8080${endpoint}`, config);
+  const resp = await fetch(`https://5adb-222-252-31-183.ngrok-free.app${endpoint}`, config);
 
   if (!resp.ok) {
     const respPayload = await resp.json();
+    alert(respPayload.error);
     throw new Error(respPayload.error);
   }
 

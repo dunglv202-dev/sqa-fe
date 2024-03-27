@@ -16,11 +16,15 @@ import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import PageContainer from 'src/components/container/PageContainer';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
+import useAuthorization from 'src/hooks/useAuthorization';
 import { configSaving, fetchSavingConfigs } from 'src/services/config';
 
 const ConfigSaving = () => {
+  useAuthorization(['ROLE_MANAGER', 'ROLE_DIRECTOR']);
+
   const tomorrow = dayjs().add(1, 'day');
   const [startDate, setStartDate] = useState(tomorrow);
+  const [submitting, setSubmitting] = useState(false);
   const [configs, setConfigs] = useState([]);
 
   useEffect(() => {
@@ -42,16 +46,19 @@ const ConfigSaving = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const payload = {
-        startDate: startDate.format('YYYY-MM-DD'),
-        configs,
-      };
+    const payload = {
+      startDate: startDate.format('YYYY-MM-DD'),
+      configs,
+    };
 
+    try {
+      setSubmitting(true);
       await configSaving(payload);
+      alert('Cấu hình biểu lãi gửi tiết kiệm đã được cập nhật thành công');
     } catch (e) {
       console.error(e);
-      alert(e.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -131,6 +138,7 @@ const ConfigSaving = () => {
               <Button
                 type="submit"
                 variant="contained"
+                disabled={submitting}
                 sx={{ paddingInline: 4, paddingBlock: 1.5 }}
               >
                 Gửi yêu cầu

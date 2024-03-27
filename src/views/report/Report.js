@@ -2,8 +2,11 @@ import { Box, Grid } from '@mui/material';
 import { IconCash, IconPigMoney, IconReport } from '@tabler/icons';
 import PageContainer from 'src/components/container/PageContainer';
 import Option from 'src/components/shared/Option';
+import useAuthorization from 'src/hooks/useAuthorization';
 
 const Report = () => {
+  useAuthorization(['ROLE_MANAGER', 'ROLE_DIRECTOR']);
+
   return (
     <PageContainer title="Báo cáo">
       <Box>

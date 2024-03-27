@@ -1,12 +1,11 @@
-import { Box, Grid, Typography, styled, useTheme } from '@mui/material';
+import { Grid, Typography, styled, useTheme } from '@mui/material';
 import { IconCash, IconCreditCard, IconCurrencyDollar, IconPigMoney } from '@tabler/icons';
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import PageContainer from 'src/components/container/PageContainer';
+import useAuthorization from 'src/hooks/useAuthorization';
 import { fetchGeneralReport } from 'src/services/report';
-import ReportCard from './components/ReportCard';
-import PeriodSelect from '../components/PeriodSelect';
-import PeriodTypeSelect from '../components/PeriodTypeSelect';
 import ReportWrapper from '../components/ReportWrapper';
+import ReportCard from './components/ReportCard';
 
 const Figure = styled(Typography)(({ theme }) => ({
   display: 'inline',
@@ -19,6 +18,8 @@ const Figure = styled(Typography)(({ theme }) => ({
 }));
 
 const GeneralReport = () => {
+  useAuthorization(['ROLE_MANAGER', 'ROLE_DIRECTOR']);
+
   const theme = useTheme();
   const [reportData, setReportData] = useState({});
 
@@ -27,9 +28,9 @@ const GeneralReport = () => {
   const IconPig = () => <IconPigMoney size={50} color={theme.palette.primary.main} />;
   const IconDollar = () => <IconCurrencyDollar size={50} color={theme.palette.primary.main} />;
 
-  const fetchReport = async (period) => {
+  const fetchReport = useCallback(async (period) => {
     setReportData(await fetchGeneralReport(period));
-  };
+  }, []);
 
   return (
     <PageContainer title="Báo cáo tổng quan">
