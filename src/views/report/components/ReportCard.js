@@ -8,7 +8,7 @@ const ReportCard = ({ figure, desc, align = 'left' }) => {
       flexDirection="column"
       alignItems={align === 'left' ? 'flex-start' : 'flex-end'}
     >
-      <Figure value={figure || '-'} />
+      <Figure value={figure || '0'} />
       <Typography variant="subtitle2">{desc}</Typography>
     </Box>
   );

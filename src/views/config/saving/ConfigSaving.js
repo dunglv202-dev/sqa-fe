@@ -54,7 +54,7 @@ const ConfigSaving = () => {
     try {
       setSubmitting(true);
       await configSaving(payload);
-      alert('Cấu hình biểu lãi gửi tiết kiệm đã được cập nhật thành công');
+      alert('Cấu hình biểu lãi gửi tiết kiệm đã được gửi đi');
     } catch (e) {
       console.error(e);
     } finally {

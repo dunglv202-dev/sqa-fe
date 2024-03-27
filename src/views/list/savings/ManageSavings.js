@@ -6,6 +6,7 @@ import SavingListing from './components/SavingListing';
 import { fetchAllSavings } from 'src/services/listing';
 
 const ManageSavings = () => {
+  const [filtering, setFiltering] = useState(false);
   const [savings, setSavings] = useState();
 
   useEffect(() => {
@@ -19,13 +20,18 @@ const ManageSavings = () => {
 
   const doFilter = async ({ idCardNo }) => {
     const respData = await fetchAllSavings(idCardNo ? { idCardNo } : null);
-    setSavings(respData.items);
+    try {
+      setFiltering(true);
+      setSavings(respData.items);
+    } finally {
+      setFiltering(false);
+    }
   };
 
   return (
     <PageContainer title="Theo dõi danh sách sổ tiết kiệm">
       <DashboardCard title="Danh sách các sổ tiết kiệm">
-        <SavingFilter onFilter={doFilter} />
+        <SavingFilter onFilter={doFilter} filtering={filtering} />
         <SavingListing savings={savings} />
       </DashboardCard>
     </PageContainer>

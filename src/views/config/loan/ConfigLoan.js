@@ -74,7 +74,7 @@ const ConfigLoan = ({ type }) => {
     try {
       setSubmitting(true);
       await configLoan(payload);
-      alert('Cấu hình lãi suất vay đã được cập nhật');
+      alert('Cấu hình lãi suất vay đã được gửi đi');
     } catch (e) {
       console.error(e);
     } finally {

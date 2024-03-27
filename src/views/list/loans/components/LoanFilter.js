@@ -2,7 +2,7 @@ import { Box, Button, Checkbox, FormControlLabel, FormGroup } from '@mui/materia
 import { useState } from 'react';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
 
-const LoanFilter = ({ onFilter }) => {
+const LoanFilter = ({ onFilter, filtering }) => {
   const [idCardNo, setIdCardNo] = useState();
   const [secured, setSecured] = useState(true);
   const [unsecured, setUnsecured] = useState(true);
@@ -47,6 +47,7 @@ const LoanFilter = ({ onFilter }) => {
         <Button
           type="submit"
           variant="contained"
+          disabled={filtering}
           sx={{ paddingBlock: 1.5, paddingInline: 3, textTransform: 'uppercase' }}
         >
           Lọc

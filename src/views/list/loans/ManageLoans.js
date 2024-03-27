@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { fetchAllLoans } from 'src/services/listing';
 
 const ManageLoans = () => {
+  const [filtering, setFiltering] = useState(false);
   const [loans, setLoans] = useState([]);
 
   useEffect(() => {
@@ -24,13 +25,18 @@ const ManageLoans = () => {
       filterParams.idCardNo = idCardNo;
     }
 
-    setLoans((await fetchAllLoans(filterParams)).items);
+    try {
+      setFiltering(true);
+      setLoans((await fetchAllLoans(filterParams)).items);
+    } finally {
+      setFiltering(false);
+    }
   };
 
   return (
     <PageContainer title="Theo dõi danh sách khoản vay">
       <DashboardCard title="Danh sách các khoản vay">
-        <LoanFilter onFilter={doFilter} />
+        <LoanFilter onFilter={doFilter} filtering={filtering} />
         <LoanListing loans={loans} />
       </DashboardCard>
     </PageContainer>

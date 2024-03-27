@@ -7,17 +7,17 @@ const Label = styled(Typography)({
 });
 
 const PeriodSelect = ({ periodType, onChange }) => {
+  const currentYear = new Date().getFullYear();
   const quarters = Array.from({ length: 4 }, (_, i) => i + 1);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 5 }, (_, i) => currentYear - i);
-  const showQuarter = periodType === 'quarter' || periodType === 'month';
+  const showQuarter = periodType === 'quarter';
   const showMonth = periodType === 'month';
 
   const [period, setPeriod] = useState({
     year: currentYear,
-    quarter: showQuarter ? 1 : null,
-    month: showMonth ? 1 : null,
+    quarter: showQuarter ? Math.floor(new Date().getMonth() / 3) + 1 : null,
+    month: showMonth ? new Date().getMonth() + 1 : null,
   });
 
   const handleChangeYear = (e) => setPeriod((prev) => ({ ...prev, year: e.target.value }));
