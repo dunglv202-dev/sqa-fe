@@ -63,7 +63,12 @@ const DistributionChart = ({ items }) => {
         {items.map((item, index) => (
           <Stack direction="row" spacing={1} alignItems="center">
             <Avatar
-              sx={{ width: 9, height: 9, bgcolor: colorSeries[index], svg: { display: 'none' } }}
+              sx={{
+                width: 9,
+                height: 9,
+                backgroundColor: colorSeries[index],
+                svg: { display: 'none' },
+              }}
             ></Avatar>
             <Typography variant="subtitle2" color="textSecondary">
               {item.label}

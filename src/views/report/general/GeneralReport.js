@@ -1,6 +1,6 @@
 import { Box, Grid, Typography, styled, useTheme } from '@mui/material';
 import { IconCash, IconCreditCard, IconCurrencyDollar, IconPigMoney } from '@tabler/icons';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import PageContainer from 'src/components/container/PageContainer';
 import { fetchGeneralReport } from 'src/services/report';
 import ReportCard from './components/ReportCard';
@@ -27,9 +27,9 @@ const GeneralReport = () => {
   const IconPig = () => <IconPigMoney size={50} color={theme.palette.primary.main} />;
   const IconDollar = () => <IconCurrencyDollar size={50} color={theme.palette.primary.main} />;
 
-  const fetchReport = async (period) => {
+  const fetchReport = useCallback(async (period) => {
     setReportData(await fetchGeneralReport(period));
-  };
+  }, []);
 
   return (
     <PageContainer title="Báo cáo tổng quan">
