@@ -2,8 +2,11 @@ import { Box, Grid } from '@mui/material';
 import { IconBuildingWarehouse, IconCreditCard, IconPigMoney } from '@tabler/icons';
 import PageContainer from 'src/components/container/PageContainer';
 import Option from 'src/components/shared/Option';
+import useAuthorization from 'src/hooks/useAuthorization';
 
 const Config = () => {
+  useAuthorization(['ROLE_MANAGER', 'ROLE_DIRECTOR']);
+
   return (
     <PageContainer title="Cấu hình">
       <Box>

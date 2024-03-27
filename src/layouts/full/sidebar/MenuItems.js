@@ -1,12 +1,4 @@
-import {
-  IconAdjustments,
-  IconCash,
-  IconList,
-  IconLogout,
-  IconPigMoney,
-  IconReport,
-  IconReportMoney,
-} from '@tabler/icons';
+import { IconAdjustments, IconList, IconLogout, IconReport } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
 
@@ -20,6 +12,7 @@ const Menuitems = [
     title: 'Cấu hình',
     icon: IconAdjustments,
     href: '/configs',
+    auth: ['ROLE_DIRECTOR', 'ROLE_MANAGER'],
   },
   {
     id: uniqueId(),
@@ -32,6 +25,7 @@ const Menuitems = [
     title: 'Báo cáo',
     icon: IconReport,
     href: '/reports',
+    auth: ['ROLE_DIRECTOR', 'ROLE_MANAGER'],
   },
   {
     navlabel: true,

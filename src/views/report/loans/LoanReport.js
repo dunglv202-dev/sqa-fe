@@ -5,8 +5,11 @@ import { fetchLoanReport } from 'src/services/report';
 import ReportWrapper from '../components/ReportWrapper';
 import DistributionChart from './components/DistributionChart';
 import Figures from './components/Figures';
+import useAuthorization from 'src/hooks/useAuthorization';
 
 const LoanReport = () => {
+  useAuthorization(['ROLE_MANAGER', 'ROLE_DIRECTOR']);
+
   const [reportData, setReportData] = useState({
     typeDistributions: [],
   });

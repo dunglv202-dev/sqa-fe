@@ -16,9 +16,12 @@ import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import PageContainer from 'src/components/container/PageContainer';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
+import useAuthorization from 'src/hooks/useAuthorization';
 import { configLoan, fetchLoanConfigs } from 'src/services/config';
 
 const ConfigLoan = ({ type }) => {
+  useAuthorization(['ROLE_MANAGER', 'ROLE_DIRECTOR']);
+
   const tomorrow = dayjs().add(1, 'day');
   const [startDate, setStartDate] = useState(tomorrow);
   const [configs, setConfigs] = useState([]);
