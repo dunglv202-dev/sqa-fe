@@ -63,4 +63,10 @@ const fetchLoanConfigs = async (type) => {
   });
 };
 
-export { configSaving, fetchSavingConfigs, fetchLoanConfigs, configLoan };
+const fetchUnresolvedConfig = async () => {
+  return await fetchApi({
+    endpoint: '/api/v1/configs/unresolved',
+  });
+};
+
+export { configSaving, fetchSavingConfigs, fetchLoanConfigs, configLoan, fetchUnresolvedConfig };
