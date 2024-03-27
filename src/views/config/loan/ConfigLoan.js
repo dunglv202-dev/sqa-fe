@@ -25,6 +25,7 @@ const ConfigLoan = ({ type }) => {
   const tomorrow = dayjs().add(1, 'day');
   const [startDate, setStartDate] = useState(tomorrow);
   const [configs, setConfigs] = useState([]);
+  const [submitting, setSubmitting] = useState(false);
   const title = 'Cấu hình biểu lãi vay ' + (type === 'UNSECURED' ? 'tín chấp' : 'thế chấp');
 
   useEffect(() => {
@@ -54,27 +55,30 @@ const ConfigLoan = ({ type }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const standardizedConfigs = [];
+
+    configs.forEach((cfg) =>
+      standardizedConfigs.push({
+        purposeId: cfg.purpose.id,
+        yearlyInterestRate: cfg.yearlyInterestRate,
+        limit: cfg.limit,
+      }),
+    );
+
+    const payload = {
+      type,
+      startDate: startDate.format('YYYY-MM-DD'),
+      configs: standardizedConfigs,
+    };
+
     try {
-      const standardizedConfigs = [];
-
-      configs.forEach((cfg) =>
-        standardizedConfigs.push({
-          purposeId: cfg.purpose.id,
-          yearlyInterestRate: cfg.yearlyInterestRate,
-          limit: cfg.limit,
-        }),
-      );
-
-      const payload = {
-        type,
-        startDate: startDate.format('YYYY-MM-DD'),
-        configs: standardizedConfigs,
-      };
-
+      setSubmitting(true);
       await configLoan(payload);
+      alert('Cấu hình lãi suất vay đã được cập nhật');
     } catch (e) {
       console.error(e);
-      alert(e.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -168,6 +172,7 @@ const ConfigLoan = ({ type }) => {
               <Button
                 type="submit"
                 variant="contained"
+                disabled={submitting}
                 sx={{ paddingInline: 4, paddingBlock: 1.5 }}
               >
                 Gửi yêu cầu
