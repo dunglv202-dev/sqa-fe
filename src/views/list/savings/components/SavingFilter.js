@@ -2,8 +2,9 @@ import { Box, Button } from '@mui/material';
 import { useState } from 'react';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
 
-const SavingFilter = ({ onFilter }) => {
+const SavingFilter = ({ onFilter, filtering }) => {
   const [idCardNo, setIdCardNo] = useState('');
+  console.log(filtering);
 
   const handleFilterSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const SavingFilter = ({ onFilter }) => {
         <Button
           type="submit"
           variant="contained"
+          disabled={filtering}
           sx={{ paddingBlock: 1.5, paddingInline: 3, textTransform: 'uppercase' }}
         >
           Lọc

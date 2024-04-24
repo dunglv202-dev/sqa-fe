@@ -128,7 +128,7 @@ const ConfigLoan = ({ type }) => {
                       <CustomTextField
                         type="number"
                         name={`${cfg.purpose.id}`}
-                        value={cfg.yearlyInterestRate * 100}
+                        value={cfg.yearlyInterestRate * 100 || ''}
                         onChange={handleRateChange}
                         inputProps={{ step: 'any' }}
                         sx={{ fontWeight: 400, width: '150px' }}

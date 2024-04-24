@@ -36,11 +36,13 @@ const LoanFilter = ({ onFilter, filtering }) => {
           <FormControlLabel
             control={<Checkbox checked={unsecured} />}
             label="Vay tín chấp"
+            checked={unsecured}
             onChange={(e) => setUnsecured(e.target.checked)}
           />
           <FormControlLabel
             control={<Checkbox checked={secured} />}
             label="Vay thế chấp"
+            checked={secured}
             onChange={(e) => setSecured(e.target.checked)}
           />
         </FormGroup>

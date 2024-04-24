@@ -103,7 +103,7 @@ const ConfigSaving = () => {
                       <CustomTextField
                         type="number"
                         name={`${cfg.termInMonth}`}
-                        value={cfg.yearlyInterestRate * 100}
+                        value={cfg.yearlyInterestRate * 100 || ''}
                         onChange={handleRateChange}
                         inputProps={{ step: 'any' }}
                         sx={{ fontWeight: 400 }}
