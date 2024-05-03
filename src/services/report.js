@@ -13,3 +13,10 @@ export const fetchLoanReport = async ({ year, quarter, month }) => {
     params: { year, quarter, month },
   });
 };
+
+export const fetchSavingReport = async ({ year, quarter, month }) => {
+  return await fetchApi({
+    endpoint: '/api/v1/reports/saving',
+    params: { year, quarter, month },
+  });
+};
