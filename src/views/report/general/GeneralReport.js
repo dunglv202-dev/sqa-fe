@@ -43,7 +43,7 @@ const GeneralReport = () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <ReportCard icon={IconMoney}>
-              <Figure>{reportData.lendingAmount}</Figure> cho vay
+              <Figure>{reportData.lendingAmount}</Figure> tổng tiền cho vay
             </ReportCard>
           </Grid>
           <Grid item xs={12} sm={6}>

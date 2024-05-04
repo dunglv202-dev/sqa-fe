@@ -96,7 +96,7 @@ const ConfigSaving = () => {
                   <TableRow key={cfg.termInMonth}>
                     <TableCell align="center">
                       <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                        {cfg.termInMonth}
+                        {cfg.termInMonth || 'Không kỳ hạn'}
                       </Typography>
                     </TableCell>
                     <TableCell align="center">

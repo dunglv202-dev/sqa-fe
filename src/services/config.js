@@ -2,16 +2,25 @@ import { fetchApi } from './general';
 
 function getTerm(termInMonth) {
   switch (termInMonth) {
+    case null:
+    case 0:
+      return 'ON_DEMAND';
     case 1:
       return 'ONE_MONTH';
     case 2:
       return 'TWO_MONTHS';
     case 3:
       return 'THREE_MONTHS';
+    case 5:
+      return 'FIVE_MONTHS';
     case 6:
       return 'SIX_MONTHS';
     case 12:
       return 'TWELVE_MONTHS';
+    case 13:
+      return 'THIRTEEN_MONTHS';
+    case 15:
+      return 'FIFTEEN_MONTHS';
     case 18:
       return 'EIGHT_TEEN_MONTHS';
     case 24:

@@ -19,7 +19,7 @@ const Figures = ({ reportData }) => {
       <Grid item xs={12} lg={6}>
         <ReportCard
           figure={reportData.interestPayForDueAccount}
-          desc={'lợi nhuận trả cho sổ đáo hạn'}
+          desc={'tiền lãi trả cho sổ đáo hạn'}
         />
       </Grid>
     </Grid>

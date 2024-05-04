@@ -103,7 +103,7 @@ const SavingListing = ({ savings }) => {
               </TableCell>
               <TableCell>
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                  {saving.termInMonth} tháng
+                  {saving.termInMonth ? `${saving.termInMonth} tháng` : 'Không kỳ hạn'}
                 </Typography>
               </TableCell>
               <TableCell align="right">
