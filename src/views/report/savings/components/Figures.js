@@ -8,11 +8,18 @@ const Figures = ({ reportData }) => {
         <ReportCard figure={reportData.numberOfSavingAccount} desc={'số tiết kiệm mới'} />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <ReportCard figure={reportData.depositAmount} desc={'tổng tiền đã gửi'} />
+        <ReportCard
+          figure={new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+            reportData.depositAmount,
+          )}
+          desc={'tổng tiền đã gửi'}
+        />
       </Grid>
       <Grid item xs={12} lg={6}>
         <ReportCard
-          figure={reportData.interestAmountToPay}
+          figure={new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+            reportData.interestAmountToPay,
+          )}
           desc={'tiền lãi phải trả cho khách hàng đang mở sổ'}
         />
       </Grid>

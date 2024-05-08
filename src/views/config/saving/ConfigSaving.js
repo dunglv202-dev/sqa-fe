@@ -39,6 +39,8 @@ const ConfigSaving = () => {
     const termInMonth = Number(e.target.name);
     const newInterest = Number(e.target.value) / 100;
 
+    console.log(termInMonth, newInterest)
+
     configs.find((entry) => entry.termInMonth === termInMonth).yearlyInterestRate = newInterest;
     setConfigs([...configs]);
   };

@@ -39,7 +39,12 @@ const SavingDetails = () => {
         </DetailSection>
         <DetailSection title="Thông tin sổ tiết kiệm">
           <DetailField label="Ngày tạo" value={saving?.depositDate} />
-          <DetailField label="Số tiền gửi" value={saving?.amount} />
+          <DetailField
+            label="Số tiền gửi"
+            value={new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+              saving?.amount,
+            )}
+          />
           <DetailField
             label="Kỳ gửi"
             value={saving?.termInMonth && `${saving?.termInMonth} tháng`}
@@ -49,7 +54,12 @@ const SavingDetails = () => {
             value={(saving?.yearlyInterestRate * 100)?.toFixed(2) || 0}
           />
           <DetailField label="Ngày đáo hạn" value={saving?.dueDate} />
-          <DetailField label="Tổng tiền được nhận" value={saving?.totalEarned} />
+          <DetailField
+            label="Tổng tiền được nhận"
+            value={new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+              saving?.totalEarned,
+            )}
+          />
         </DetailSection>
       </Box>
     </PageContainer>

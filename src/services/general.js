@@ -23,7 +23,7 @@ const fetchApi = async ({ endpoint = '/', method = 'GET', params, payload }) => 
     endpoint = endpoint + '?' + new URLSearchParams(params);
   }
 
-  const resp = await fetch(`http://localhost:8080${endpoint}`, config);
+  const resp = await fetch(`http://localhost:8098/${endpoint}`, config);
 
   if (!resp.ok) {
     const respPayload = await resp.json();

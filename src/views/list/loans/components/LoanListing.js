@@ -116,7 +116,9 @@ const LoanListing = ({ loans }) => {
               </TableCell>
               <TableCell align="right">
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={600}>
-                  {loan.amount}
+                  {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+                    loan.amount,
+                  )}
                 </Typography>
               </TableCell>
               <TableCell align="center">

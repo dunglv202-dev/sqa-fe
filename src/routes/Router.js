@@ -15,6 +15,7 @@ import GeneralReport from 'src/views/report/general/GeneralReport';
 import LoanReport from 'src/views/report/loans/LoanReport';
 import SavingReport from 'src/views/report/savings/SavingReport';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
+import DetailSavingConfig from 'src/views/config/DetailSavingConfig';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -87,7 +88,7 @@ const Router = [
             exact: true,
             children: [
               { path: '', exact: true, element: <ConfigSaving /> },
-              { path: ':id', element: <DetailLoanConfig /> },
+              { path: ':id', element: <DetailSavingConfig /> },
             ],
           },
           {

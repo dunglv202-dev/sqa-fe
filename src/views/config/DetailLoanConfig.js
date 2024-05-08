@@ -125,7 +125,7 @@ const DetailLoanConfig = () => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   disablePast
-                  value={new Date()}
+                  value={new Date(detailConfig.startDate)}
                   onChange={() => {}}
                   disabled
                   views={['day', 'month', 'year']}

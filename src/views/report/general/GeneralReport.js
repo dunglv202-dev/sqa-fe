@@ -43,7 +43,12 @@ const GeneralReport = () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <ReportCard icon={IconMoney}>
-              <Figure>{reportData.lendingAmount}</Figure> tổng tiền cho vay
+              <Figure>
+                {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+                  reportData.lendingAmount,
+                )}
+              </Figure>{' '}
+              tổng tiền cho vay
             </ReportCard>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -53,7 +58,12 @@ const GeneralReport = () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <ReportCard icon={IconDollar}>
-              <Figure>{reportData.savingDepositAmount}</Figure> tiền gửi tiết kiệm
+              <Figure>
+                {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+                  reportData.savingDepositAmount,
+                )}
+              </Figure>{' '}
+              tiền gửi tiết kiệm
             </ReportCard>
           </Grid>
         </Grid>

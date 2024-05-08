@@ -108,12 +108,14 @@ const SavingListing = ({ savings }) => {
               </TableCell>
               <TableCell align="right">
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={600}>
-                  {saving.amount}
+                  {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+                    saving.amount,
+                  )}
                 </Typography>
               </TableCell>
               <TableCell align="right">
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={600}>
-                  {(saving.yearlyInterestRate * 100).toFixed(2)}%
+                  {(saving.yearlyInterestRate * 100)?.toFixed(2)}%
                 </Typography>
               </TableCell>
               <TableCell align="center">

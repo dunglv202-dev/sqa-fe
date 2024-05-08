@@ -54,11 +54,21 @@ const LoanDetails = () => {
           <DetailField label="Nơi cấp" value={loan?.customer.idCardIssueBy} />
         </DetailSection>
         <DetailSection title="Thông tin khoản vay">
-          <DetailField label="Số tiền vay" value={loan?.amount} />
-          <DetailField label="Số tiền còn phải trả" value={loan?.remaining} />
+          <DetailField
+            label="Số tiền vay"
+            value={new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+              loan?.amount,
+            )}
+          />
+          <DetailField
+            label="Số tiền còn phải trả"
+            value={new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
+              loan?.remaining,
+            )}
+          />
           <DetailField
             label="Lãi suất (%/năm)"
-            value={((loan?.yearlyInterestRate).toFixed(2) || 0) * 100}
+            value={(loan?.yearlyInterestRate?.toFixed(2) || 0) * 100}
           />
           <DetailField label="Ngày cho vay" value={loan?.createdAt} />
           <DetailField label="Ngày đáo hạn" value={loan?.dueDate} />

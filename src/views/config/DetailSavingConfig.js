@@ -13,19 +13,22 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import PageContainer from 'src/components/container/PageContainer';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
-import { fetchSavingConfig } from 'src/services/config';
+import { fetchSavingConfig, updateConfigReviewResult } from 'src/services/config';
 
 const DetailSavingConfig = () => {
   const { id } = useParams();
   const [configs, setConfigs] = useState([]);
+  const navigate = useNavigate();
+
+  const [detailConfig, setDetailConfig] = useState({});
 
   useEffect(() => {
     (async () => {
       const data = await fetchSavingConfig(id);
-      setConfigs(data);
+      setDetailConfig(data);
     })();
   }, []);
 
@@ -67,7 +70,7 @@ const DetailSavingConfig = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {configs.map((cfg) => (
+                {detailConfig.configs?.map((cfg) => (
                   <TableRow key={cfg.termInMonth}>
                     <TableCell align="center">
                       <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
@@ -79,8 +82,9 @@ const DetailSavingConfig = () => {
                         type="number"
                         name={`${cfg.termInMonth}`}
                         value={cfg.yearlyInterestRate * 100 || ''}
-                        onChange={handleRateChange}
+                        onChange={() => {}}
                         inputProps={{ step: 'any' }}
+                        disabled
                         sx={{ fontWeight: 400 }}
                       />
                     </TableCell>
@@ -101,10 +105,10 @@ const DetailSavingConfig = () => {
                 <Typography sx={{ marginBottom: 1 }}>Áp dụng từ</Typography>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
+                    disabled
                     disablePast
-                    minDate={tomorrow}
-                    value={startDate}
-                    onChange={(v) => setStartDate(v)}
+                    value={new Date(detailConfig.startDate)}
+                    onChange={() => {}}
                     views={['day', 'month', 'year']}
                     renderInput={(params) => <CustomTextField sx={{ width: '100%' }} {...params} />}
                   />
