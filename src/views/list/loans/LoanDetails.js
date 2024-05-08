@@ -56,7 +56,10 @@ const LoanDetails = () => {
         <DetailSection title="Thông tin khoản vay">
           <DetailField label="Số tiền vay" value={loan?.amount} />
           <DetailField label="Số tiền còn phải trả" value={loan?.remaining} />
-          <DetailField label="Lãi suất (%/năm)" value={(loan?.yearlyInterestRate || 0) * 100} />
+          <DetailField
+            label="Lãi suất (%/năm)"
+            value={((loan?.yearlyInterestRate).toFixed(2) || 0) * 100}
+          />
           <DetailField label="Ngày cho vay" value={loan?.createdAt} />
           <DetailField label="Ngày đáo hạn" value={loan?.dueDate} />
           <DetailField label="Mục đích vay" value={loan?.purpose} />

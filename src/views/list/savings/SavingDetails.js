@@ -44,7 +44,10 @@ const SavingDetails = () => {
             label="Kỳ gửi"
             value={saving?.termInMonth && `${saving?.termInMonth} tháng`}
           />
-          <DetailField label="Lãi suất (%/năm)" value={saving?.yearlyInterestRate * 100} />
+          <DetailField
+            label="Lãi suất (%/năm)"
+            value={(saving?.yearlyInterestRate * 100)?.toFixed(2) || 0}
+          />
           <DetailField label="Ngày đáo hạn" value={saving?.dueDate} />
           <DetailField label="Tổng tiền được nhận" value={saving?.totalEarned} />
         </DetailSection>

@@ -15,6 +15,8 @@ function getTerm(termInMonth) {
       return 'FIVE_MONTHS';
     case 6:
       return 'SIX_MONTHS';
+    case 9:
+      return 'NINE_MONTHS';
     case 12:
       return 'TWELVE_MONTHS';
     case 13:
@@ -75,6 +77,28 @@ const fetchLoanConfigs = async (type) => {
 const fetchUnresolvedConfig = async () => {
   return await fetchApi({
     endpoint: '/api/v1/configs/unresolved',
+  });
+};
+
+export const fetchLoanConfig = async (id) => {
+  return await fetchApi({
+    endpoint: `/api/v1/configs/loans/${id}`,
+  });
+};
+
+export const fetchSavingConfig = async (id) => {
+  return await fetchApi({
+    endpoint: `/api/v1/configs/savings/${id}`,
+  });
+};
+
+export const updateConfigReviewResult = async ({ id, approved }) => {
+  return await fetchApi({
+    method: 'PUT',
+    endpoint: `/api/v1/configs/${id}/result`,
+    payload: {
+      approved,
+    },
   });
 };
 

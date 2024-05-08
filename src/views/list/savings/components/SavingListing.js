@@ -113,7 +113,7 @@ const SavingListing = ({ savings }) => {
               </TableCell>
               <TableCell align="right">
                 <Typography color="textSecondary" variant="subtitle2" fontWeight={600}>
-                  {saving.yearlyInterestRate * 100}%
+                  {(saving.yearlyInterestRate * 100).toFixed(2)}%
                 </Typography>
               </TableCell>
               <TableCell align="center">

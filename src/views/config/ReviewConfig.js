@@ -104,7 +104,9 @@ const ReviewConfig = () => {
                 </Typography>
               </TableCell>
               <TableCell align="center">
-                <Link href={`/configs/${cfg.id}`}>
+                <Link
+                  to={`/configs/${cfg.configType === 'SAVING' ? 'savings' : 'loans'}/${cfg.id}`}
+                >
                   <Typography typography="subtitle2">Chi tiết</Typography>
                 </Link>
               </TableCell>

@@ -2,18 +2,19 @@ import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Logout from 'src/views/authentication/Logout';
 import Config from 'src/views/config/Config';
+import DetailLoanConfig from 'src/views/config/DetailLoanConfig';
 import ConfigLoan from 'src/views/config/loan/ConfigLoan';
 import ConfigSaving from 'src/views/config/saving/ConfigSaving';
 import Manage from 'src/views/list/Manage';
+import LoanDetails from 'src/views/list/loans/LoanDetails';
 import ManageLoans from 'src/views/list/loans/ManageLoans';
 import ManageSavings from 'src/views/list/savings/ManageSavings';
+import SavingDetails from 'src/views/list/savings/SavingDetails';
 import Report from 'src/views/report/Report';
-import Loadable from '../layouts/full/shared/loadable/Loadable';
 import GeneralReport from 'src/views/report/general/GeneralReport';
 import LoanReport from 'src/views/report/loans/LoanReport';
-import LoanDetails from 'src/views/list/loans/LoanDetails';
-import SavingDetails from 'src/views/list/savings/SavingDetails';
 import SavingReport from 'src/views/report/savings/SavingReport';
+import Loadable from '../layouts/full/shared/loadable/Loadable';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -81,12 +82,20 @@ const Router = [
         path: '/configs',
         children: [
           { path: '', exact: true, element: <Config /> },
-          { path: 'savings', exact: true, element: <ConfigSaving /> },
+          {
+            path: 'savings',
+            exact: true,
+            children: [
+              { path: '', exact: true, element: <ConfigSaving /> },
+              { path: ':id', element: <DetailLoanConfig /> },
+            ],
+          },
           {
             path: 'loans',
             children: [
               { path: 'secured', exact: true, element: <ConfigLoan type="SECURED" /> },
               { path: 'unsecured', exact: true, element: <ConfigLoan type="UNSECURED" /> },
+              { path: ':id', exact: true, element: <DetailLoanConfig /> },
             ],
           },
         ],
