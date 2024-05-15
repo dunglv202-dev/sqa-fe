@@ -20,7 +20,12 @@ const AuthLogin = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    await authContext.login(username, password);
+    try {
+      await authContext.login(username, password);
+    } catch (error) {
+      console.error(error);
+      alert('Đăng nhập thất bại');
+    }
   };
 
   return (
