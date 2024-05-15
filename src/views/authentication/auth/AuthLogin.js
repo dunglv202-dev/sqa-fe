@@ -23,7 +23,6 @@ const AuthLogin = () => {
     try {
       await authContext.login(username, password);
     } catch (error) {
-      console.error(error);
       alert('Đăng nhập thất bại');
     }
   };

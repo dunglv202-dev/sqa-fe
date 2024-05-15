@@ -27,7 +27,6 @@ const fetchApi = async ({ endpoint = '/', method = 'GET', params, payload }) => 
 
   if (!resp.ok) {
     const respPayload = await resp.json();
-    alert(respPayload.error);
     throw new Error(respPayload.error);
   }
 
